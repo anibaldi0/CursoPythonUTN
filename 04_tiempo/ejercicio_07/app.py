@@ -30,10 +30,10 @@ class App(customtkinter.CTk):
         #self.btn_oculto.grid_forget()
  
     def btn_mostrar_on_click(self):
-        pass
+        self.after(2000, self.activar_boton_oculto)
 
     def activar_boton_oculto(self):
-        pass
+        self.btn_oculto.grid(row=2, pady=10, columnspan=2, sticky="nsew")
         
 
 if __name__ == "__main__":

@@ -26,10 +26,14 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        self.ocultar_boton()
+        self.after(3000, self.mostrar_botones)
 
-    def activar_boton(self):
-        pass
+    def mostrar_botones(self):
+        self.btn_mostrar.grid(row=1, pady=10, columnspan=2, sticky="nsew")
+
+    def ocultar_boton(self):
+        self.btn_mostrar.grid_forget()
         
             
 

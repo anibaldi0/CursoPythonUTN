@@ -10,7 +10,7 @@ import customtkinter
 Nombre: Anibal
 Apellido: Caeiro
 
-8 - Luego de presionar el botón 'Iniciar',se disparara ; un temporizador de una función que haga visible el botón "el oculto". 
+8 - Luego de presionar el botón 'Iniciar',se disparara un temporizador de una función que haga visible el botón "el oculto". 
 Al pulsar el botón "el oculto" se deberá calcular la cantidad de segundos transcurridos desde que este se comenzó a visualizar hasta que fue pulsado.
 '''
 
@@ -28,17 +28,21 @@ class App(customtkinter.CTk):
         self.btn_oculto = customtkinter.CTkButton(master=self, text="Boton Oculto", command=self.btn_oculto_on_click)
         #self.btn_oculto.grid(row=2, pady=10, columnspan=2, sticky="nsew")
         #self.btn_oculto.grid_forget()
+
+
  
     def btn_mostrar_on_click(self):
-        pass
+        self.activar_boton_oculto()
         
     
     def btn_oculto_on_click(self):
-        pass
-        
+        ts_fin_temporizador = time.time()
+        ts_temporizador = int(ts_fin_temporizador - self.ts_inicio_temporizador)
+        alert(title="", message="El boton oculto se presiono a los {0} segundos".format(ts_temporizador))
 
     def activar_boton_oculto(self):
-        pass
+        self.btn_oculto.grid(row=2, pady=10, columnspan=2, sticky="nsew")
+        self.ts_inicio_temporizador = time.time()
         
 
 if __name__ == "__main__":
