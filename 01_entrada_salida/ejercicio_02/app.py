@@ -20,17 +20,17 @@ class App(customtkinter.CTk):
 
         # configure window
         self.title("UTN FRA")
-       
+    
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostar", command=self.btn_mostrar_on_click) # se declara un boton
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew") #se posiciona el boton
 
 
     def btn_mostrar_on_click(self):
-      
-      result = prompt(title='Prompt', prompt='Ingrese un valor')
-      alert(title='Ingrese un valor', message='El valor ingresado es ' + result)
+    
+        result = prompt(title='Prompt', prompt='Ingrese un valor')
+        alert(title='Ingrese un valor', message='El valor ingresado es ' + result)
 
-    # varante del ejercicio en clase
+    # variante del ejercicio en clase
     #titulo = 'Pregunta'
     #nombre = prompt(title='Pregunta',prompt='Escriba su nombre')
     #mensaje = 'Hola ' + nombre + 'Como estas?'

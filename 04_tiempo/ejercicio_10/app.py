@@ -47,7 +47,6 @@ class App(customtkinter.CTk):
     def btn_mostrar_on_click(self):
         pass
         
-    
     def btn_oculto_1_on_click(self):
         pass
 
@@ -62,7 +61,6 @@ class App(customtkinter.CTk):
 
     def restart(self):
         pass
-
         
     def activar_boton_oculto(self):
         pass
