@@ -37,9 +37,9 @@ class App(customtkinter.CTk):
         self.resetear()
         while (self.flag == True):
             self.numero_ingresado_txt = prompt(title="", prompt="Ingrese un numero")
-            if(self.numero_ingresado_txt == None or self.numero_ingresado_txt == "0"):
+            if(self.numero_ingresado_txt == None):
                 self.flag = False
-                print("Sale porque preciono {0}".format(self.numero_ingresado_txt))
+                print("Sale porque preciono Cancelar")
             else:
                 self.numero_ingresado_int = int(self.numero_ingresado_txt)
                 self.contador += 1

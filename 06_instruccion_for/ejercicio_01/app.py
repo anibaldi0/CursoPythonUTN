@@ -24,11 +24,11 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
 
-        self.lista_numeros = [5,2,1,4,3]
+        self.lista_numeros = [1,2,3,4,5]
     def btn_mostrar_on_click(self):
         for numero in self.lista_numeros:
-            self.lista_numeros.sort()
             print(numero)
+            alert(title="", message="Numero ascendente {0}".format(numero))
     
             
 
