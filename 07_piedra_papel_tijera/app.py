@@ -41,7 +41,7 @@ class App(customtkinter.CTk):
         print(self.seleccion_cpu)
         
 
-
+    
     def deshabilitar_botones(self):
         self.btn_piedra.configure(state="disabled")
         self.btn_papel.configure(state="disabled")
@@ -58,7 +58,7 @@ class App(customtkinter.CTk):
 
     def cpu_elije(self):
         pass
-     
+    
     def btn_piedra_on_click(self):
         self.deshabilitar_botones()
         pass
