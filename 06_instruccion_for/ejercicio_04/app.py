@@ -24,14 +24,16 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pregunta = question(title="", message="Desea continuar?")
-        if (pregunta == True):
-            pregunta = question(title="", message="Desea continuar?")
-            for repetir in pregunta :
-                
+        
+        while(True):
+            self.preguta = question(title="", message="Desea continuar?")
+            if (self.preguta != False):
+                continue
+            else:
+                break
+        
 
-        
-        
+
     
 if __name__ == "__main__":
     app = App()

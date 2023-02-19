@@ -24,7 +24,7 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
 
-        self.lista_numeros = [1,2,3,4,5]
+        self.lista_numeros = range(1,6)
     def btn_mostrar_on_click(self):
         for numero in self.lista_numeros:
             print(numero)

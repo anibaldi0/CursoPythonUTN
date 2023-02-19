@@ -31,8 +31,9 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        self.repetir_veces = int(self.txt_repetir.get())
-        for veces in range(self.repetir_veces):
+        self.repetir_veces_txt = self.txt_repetir.get()
+        self.repetir_veces_int = int(self.repetir_veces_txt)
+        for veces in range(self.repetir_veces_int):
             mensaje = "Hola UTN FRA"
             print(mensaje)
             alert(title="", message=mensaje)

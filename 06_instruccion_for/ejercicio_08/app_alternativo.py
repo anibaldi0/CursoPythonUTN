@@ -7,8 +7,7 @@ import customtkinter
 '''
 Nombre: Anibal Caeiro
 
-Al presionar el botón Mostrar pedir un número. mostrar los números divisores desde el 1 al número ingresado, 
-y mostrar la cantidad de números divisores encontrados.
+Al presionar el botón Mostrar pedir un número. Informar si el número es PRIMO o no.
 '''
 
 class App(customtkinter.CTk):
@@ -25,28 +24,27 @@ class App(customtkinter.CTk):
         self.resetear()
     def btn_mostrar_on_click(self):
         self.resetear()
-        self.numero_ingresado_txt = prompt(title="", prompt="Ingrese un numero")
+        self.numero_ingresado_txt = prompt(title="", prompt="Ingrese un numero positivo")
         if(self.numero_ingresado_txt == None):
-            print("Apreto Cancelar")
+            print("Usted apreto Cancelar")
         else:
             self.numero_ingresado_int = int(self.numero_ingresado_txt)
-            print(self.numero_ingresado_int)
+
             for numero in range(1, self.numero_ingresado_int + 1):
-                if self.numero_ingresado_int % numero == 0:
-                    self.contador_numeros_divisores += 1
-                    self.lista_numeros_divisores = numero
-                    print("El " + str(numero) + " es divisor de " + str(self.numero_ingresado_int))
-            print("Hay " + str(self.contador_numeros_divisores) + " divisores encontrados")
+                if(self.numero_ingresado_int % numero == 0):
+                    print(str(numero) + " es multiplo de " + str(self.numero_ingresado_int))
+                    self.contador_divisores += 1
+            print("tiene {0} divisores".format(self.contador_divisores))
+        if(self.contador_divisores < 3):
+            print("El numero {0} es primo".format(self.numero_ingresado_int))
+            
 
 
 
-    def resetear(self):
+    def resetear (self):
         self.numero_ingresado_int = None
         self.numero_ingresado_txt = None
-        self.lista_numeros_divisores = []
-        self.contador_numeros_divisores = 0
-
-        
+        self.contador_divisores = 0
     
 if __name__ == "__main__":
     app = App()

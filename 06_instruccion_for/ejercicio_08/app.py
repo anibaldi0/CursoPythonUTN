@@ -21,9 +21,32 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
+        self.resetear()
     def btn_mostrar_on_click(self):
-        pass
+        self.resetear()
+        self.numero_ingresado_txt = prompt(title="", prompt="Ingrese un numero positivo")
+        if(self.numero_ingresado_txt == None):
+            print("Usted apreto Cancelar")
+        else:
+            self.numero_ingresado_int = int(self.numero_ingresado_txt)
+
+            for numero in range(1, self.numero_ingresado_int + 1):
+                if(self.numero_ingresado_int % numero == 0):
+                    print(str(numero) + " es multiplo de " + str(self.numero_ingresado_int))
+                    self.contador_divisores += 1
+            if(self.contador_divisores < 3):
+                mensaje1 = "Es primo"
+            else:
+                mensaje1 = "No es primo"
+
+            mensaje = "El numero {0}\n{1}"
+            mensaje = mensaje.format(self.numero_ingresado_int, mensaje1)
+            alert(title="", message=mensaje)
+            
+    def resetear (self):
+        self.numero_ingresado_int = None
+        self.numero_ingresado_txt = None
+        self.contador_divisores = 0
     
 if __name__ == "__main__":
     app = App()

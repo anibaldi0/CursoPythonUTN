@@ -23,7 +23,7 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-        self.lista_numeros = [5, 2, 1, 4, 3]
+        self.lista_numeros = [5,3,1,2,4]
     def btn_mostrar_on_click(self):
         for numero in self.lista_numeros:
             self.lista_numeros.sort(reverse = True)

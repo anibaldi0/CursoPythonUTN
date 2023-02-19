@@ -49,8 +49,8 @@ class App(customtkinter.CTk):
                 if(self.minimo == None or self.numero_ingresado_int < self.minimo):
                     self.minimo = self.numero_ingresado_int
         
-        self.txt_maximo.insert(0, self.maximo)
-        self.txt_minimo.insert(0, self.minimo)
+        self.txt_maximo.insert(0, "El maximo es " + str(self.maximo))
+        self.txt_minimo.insert(0, "El minimo es " + str(self.minimo))
 
         mensaje = "El ultimo numero ingresado es {0}\nEl maximo es {1}\nEl minimo es {2}"
         mensaje = mensaje.format(self.numero_ingresado_int, self.maximo, self.minimo)

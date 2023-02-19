@@ -21,9 +21,16 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
+        self.valor_ingresado_int = 0
     def btn_mostrar_on_click(self):
-        pass
+        while(True):
+            self.valor_ingresado_txt = prompt(title="", prompt="Ingrese un valor")
+            if(self.valor_ingresado_txt == "9"):
+                print("Cancelo con el 9")
+                break
+            else:
+                self.valor_ingresado_int = int(self.valor_ingresado_txt)
+
         
     
 if __name__ == "__main__":
