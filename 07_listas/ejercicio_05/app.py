@@ -7,7 +7,7 @@ import customtkinter
 '''
 Nombre: Anibal Caeiro
 
-Al presionar el botón 'PROMEDIO' se analizará el vector lista_datos a efectos de calcular 
+Al presionar el botón 'SUMA' se analizará el vector lista_datos a efectos de calcular 
 el promedio el cual deberá ser informado utilizando Dialog Alert.
 '''
 
@@ -33,7 +33,7 @@ class App(customtkinter.CTk):
             print(self.suma_numeros)
             self.promedio = self.suma_numeros / self.cantidad_numeros
         print(self.promedio)
-        alert(title="", message="El promedio de los numeros de la lista es {0}".format(self.promedio))
+        alert(title="", message="La suma de los numeros de la lista es {0}".format(self.suma_numeros))
     
 if __name__ == "__main__":
     app = App()

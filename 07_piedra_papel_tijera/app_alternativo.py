@@ -9,15 +9,16 @@ import random
 '''
 Nombre: Anibal Caeiro
 
-Piedra, Papel o Tijera (v 2.0):
+[comentar la línea 36 o 50
+Que serian los print(self.seleccion_cpu)
+
+Piedra, Papel o Tijera (v 1.0):
     Al comenzar el juego generaremos un número RANDOM del 1 al 3 para la selección de la máquina, siendo 1 para “piedra”, el 2 para “papel” y 3 para “tijera”.
 	El jugador seleccionará mediante uno de los botones su opción  y le informaremos si ganó, empató o perdió
-
-Ahora debemos informar cuantas veces se ganó, perdió o empató
 '''
 
 class App(customtkinter.CTk):
-    
+     
     def __init__(self):
         super().__init__()
 
@@ -38,98 +39,96 @@ class App(customtkinter.CTk):
         
         self.cpu_elije()
         #print(self.seleccion_cpu)
+        
 
+    
     def deshabilitar_botones(self):
         self.btn_piedra.configure(state="disabled")
         self.btn_papel.configure(state="disabled")
         self.btn_tijera.configure(state="disabled")
-        
-        #self.contador_vitorias_cpu = 0 
-        #self.contador_vitorias_player_1 = 0 
-        self.contador_gana_player_one = 0
-        self.contador_gana_la_pc = 0
-        self.contador_empate = 0
 
-    ready_player_one = question(title="", message="Ready Player One?")
+    
+        #print(self.seleccion_cpu)
+
+    '''
+    Piedra, Papel o Tijera (v 1.0):
+    Al comenzar el juego generaremos un número RANDOM del 1 al 3 para la selección de la máquina, siendo 1 para “piedra”, el 2 para “papel” y 3 para “tijera”.
+	El jugador seleccionará mediante uno de los botones su opción  y le informaremos si ganó, empató o perdió
+    '''
+    
+
+    ready_player_one = question(title="", message="Ready Player One")
     if(ready_player_one == False):
         exit()
     else:
-        nombre_jugador = prompt(title="", prompt="Ingrese su nombre")
+        nombre_jugador = prompt(title="", prompt="Ingresa tu nombre Payer One")
         if(nombre_jugador == None):
             exit()
         else:
             nombre_jugador = nombre_jugador.capitalize()
-            
     def cpu_elije(self):
-            self.numero_random = random.randint(1, 3)
-            if(self.numero_random == 1):
-                print("Piedra")
-            elif(self.numero_random == 2):
-                print("Papel")
-            elif(self.numero_random == 3):
-                print("Tijera")
-
+                self.numero_random = random.randint(1, 3)
+                if(self.numero_random == 1):
+                    print("Piedra 1")
+                elif(self.numero_random == 2):
+                    print("Papel 2")
+                else:
+                    print("Tijera 3")
+    
     def btn_piedra_on_click(self):
+        self.numero_elegido = 1
         if(self.numero_random == 1):
-            print("Empatamos")
+            print("Los dos sacamos piedra\nTuviste suerte {0}, hemos empatado....\nDesempatemos".format(self.nombre_jugador))
         elif(self.numero_random == 2):
-            print("Ganeeeee")
+            print("Come tierra {0}\n Te ganeeeeee\nPapel envuelve la piedra".format(self.nombre_jugador))
         else:
-            print("Gano player one")
-        #self.contadores()
+            print("La piedra rompe las tijeras\nMe ganaste {0}\n Tuviste mucha suerte".format(self.nombre_jugador))
         self.deshabilitar_botones()
         self.mensaje_alerta()
+        
 
     def btn_papel_on_click(self):
+        self.numero_elegido = 2
         if(self.numero_random == 1):
-            print("Gano player one")
+            print("Me ganaste {0}\n Tuviste suerte".format(self.nombre_jugador))
         elif(self.numero_random == 2):
-            print("Empatamos")
+            print("Los dos sacamos papel\nTuviste suerte {0} \nDesempatemos".format(self.nombre_jugador))
         else:
-            print("Ganeeeee")
-        #self.contadores()
+            print("Come tierra {0}\n Te ganeeeeee\nLa tijera corta el papel".format(self.nombre_jugador))
         self.deshabilitar_botones()
         self.mensaje_alerta()
 
     def btn_tijera_on_click(self):
+        self.numero_elegido = 3
         if(self.numero_random == 1):
-            print("Ganeeeee")
+            print("Come tierra {0}\n Te ganeeeeee\nLa piedra rompe la tijera".format(self.nombre_jugador))
         elif(self.numero_random == 2):
-            print("Gano player one")
+            print("Me ganaste {0}\n Tuviste suerte".format(self.nombre_jugador))
         else:
-            print("Empatamos")
-        #self.contadores()
+            print("Los dos sacamos tijera\nTuviste suerte {0}, no me gusta empatar....\nDesempatemos".format(self.nombre_jugador))
         self.deshabilitar_botones()
         self.mensaje_alerta()
         
-    def mensaje_alerta(self):
-        if((self.numero_random == 1 and self.nombre_jugador == 3) or (self.numero_random == 2 and self.nombre_jugador == 2) or (self.numero_random == 3 and self.nombre_jugador == 2)):
-            self.gana_la_pc = "Te ganeeeeee...\nCome tierra {0}".format(self.nombre_jugador)
-            self.mensaje = self.gana_la_pc
-            #self.contador_gana_la_pc += 1
-        elif((self.numero_random == 1 and self.nombre_jugador == 2) or (self.numero_random == 2 and self.nombre_jugador == 3) or (self.numero_random == 3 and self.nombre_jugador == 1)):
-            self.gana_player_one = "Me ganaste {0}\nFue pura suerte...seguro me viste antes".format(self.nombre_jugador)
-            self.mensaje = self.gana_player_one
-            #self.contador_gana_player_one += 1
-        elif(self.numero_random == self.nombre_jugador):
+
+    def mensaje_alerta (self):
+        if((self.numero_random == 2 and self.numero_elegido == 1) or (self.numero_random == 1 and self.numero_elegido == 3) or (self.numero_random == 3 and self.numero_elegido == 2)):
+            self.gana_pc = "Te ganeeeeee...\nCome tierra {0}".format(self.nombre_jugador)
+            self.mensaje = self.gana_pc
+        elif((self.numero_random == 2 and self.numero_elegido == 3) or (self.numero_random == 3 and self.numero_elegido == 1) or (self.numero_random == 3 and self.numero_elegido == 2)):
+            self.gana_jugador = "Me ganaste {0}\nFue pura suerte...seguro me viste antes".format(self.nombre_jugador)
+            self.mensaje = self. gana_jugador
+        elif(self.numero_random == self.numero_elegido):
             self.empate = "Solo empatamos {0}...\nEn esta proxima te gano".format(self.nombre_jugador)
             self.mensaje = self.empate
-            #self. contador_empate += 1
+        
         alert(title="", message=self.mensaje)
-                
-        #alert(title="", message="La PC gano {0}\nEmpatamos {1}\n{2} ganaste {3} pero tuviste suerte".format(self.contador_gana_la_pc, self.contador_empate, self.nombre_jugador, self.contador_gana_player_one))
-                    
-
-    def contadores(self):
-        pass
 
     def btn_restart_on_click(self):
         self.btn_piedra.configure(state="normal")
         self.btn_papel.configure(state="normal")
         self.btn_tijera.configure(state="normal")
         self.cpu_elije()
-        #print(self.seleccion_cpu)
-
+        
 
 if __name__ == "__main__":
     app = App()

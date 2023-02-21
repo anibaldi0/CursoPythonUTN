@@ -52,51 +52,66 @@ class App(customtkinter.CTk):
         
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
+        '''
+        Si es invierno: 
+            Bariloche tiene un aumento del 20% 
+            Cataratas y Córdoba tienen un descuento del 10%
+            Mar del plata tiene un descuento del 20%
+        Si es Verano:
+            Bariloche tiene un descuento del 20%
+            Cataratas y Cordoba tienen un aumento del 10%
+            Mar del plata tiene un aumento del 20%
+        Si es Primavera u Otoño:
+            Bariloche tiene un aumento del 10%
+            Cataratas tiene un aumento del 10%
+            Mar del plata tiene un aumento del 10%
+            Córdoba tiene precio sin descuento
+        '''
+        #la primera vez responde mal
+        #tengo que preguntar dos veces el costo de la estadia para que me responda bien
+        #por que podria ser este problema?
+        self.estadia = 15000
+        self.total = 0
+        self.incremento = 0
+        self.variacion = 0
         
-    
     def btn_informar_on_click(self):
-        destino = self.combobox_destino.get()
-        estaciones = self.combobox_estaciones.get()
-        descuento = 0
-        estadia = 15000
-        total = 0
-
-        match (estaciones):
-            case 'Verano':
-                if(destino == 'Bariloche'):
-                    descuento = 0.8
-                elif(destino == 'Cataratas' and destino == 'Cordoba'):
-                    descuento = 0.9
-                else:
-                    descuento = 0.9
+        self.estacion_del_ano = self.combobox_estaciones.get()
+        print(self.estacion_del_ano)
+        self.destino = self.combobox_destino.get()
+        print(self.destino)
+        match(self.estacion_del_ano):
             case 'Invierno':
-                if(destino == 'Bariloche'):
-                    descuento = 1.20
-                elif(destino == 'Cataratas' or destino == 'Cordoba'):
-                    descuento = 0.9
-                elif(destino == 'Mar del plata'):
-                    descuento = 0.8
-            case _ :
-                if(destino !='Cordoba'):
-                    descuento = 1.1
+                if(self.destino == 'Bariloche'):
+                    self.incremento = 20
+                elif(self.destino == 'Cataratas' or self.destino == 'Cordoba'):
+                    self.incremento = -10
+                elif(self.destino == 'Mar del plata'):
+                    self.incremento = -20
+            case 'Verano':
+                if(self.destino == 'Bariloche'):
+                    self.incremento = -20
+                elif(self.destino == 'Cataratas' or self.destino == 'Cordoba'):
+                    self.incremento = 10
+                elif(self.destino == 'Mar del plata'):
+                    self.incremento = 20
+            case 'Otoño' | 'Primavera':
+                if((self.destino == 'Bariloche' or self.destino == 'Cataratas') or self.destino == 'Mar del plata'):
+                    self.incremento = 10
+                else:
+                    self.incremento = 0
 
-        mensaje1 = "El costo de la estadia, con el descuento de {0} incluido es de: {1}".format(descuento, total)
-        mensaje2 = "El costo de la estadia, con el aumento de {0} incluido es de: {1}".format(descuento, total)
-        mensaje3 = "El costo de la estadia es de: {0}".format(total)
-
-        total = estadia * descuento
-
-        if(descuento < 1):
-            mensaje = mensaje1
-        elif(descuento > 1):
-            mensaje = mensaje2
-        elif(descuento == 0):
-            mensaje = mensaje3
-
-        alert(title="", message=mensaje)
+        if(self.incremento >= 0):
+            self.nombre_del_descuento = "Incremento"
+        elif(self.incremento < 0):
+            self.nombre_del_descuento = "Descuento"
+        print(self.destino, self.nombre_del_descuento, self.incremento, self.estacion_del_ano, self.total)
         
-
-            
+        self.total = self.estadia + self.variacion
+        self.variacion = self.estadia * (self.incremento / 100)
+        mensaje = "El costo de la estadia en {0} es de 15000\nCon un {1} del {2} por se {3}\nEl costo total es {4}"
+        mensaje = mensaje.format(self.destino, self.nombre_del_descuento, self.incremento, self.estacion_del_ano, self.total)
+        alert(title="", message=mensaje)
     
 if __name__ == "__main__":
     app = App()

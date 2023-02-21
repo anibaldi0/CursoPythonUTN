@@ -55,6 +55,8 @@ class App(customtkinter.CTk):
             case 'Diciembre':
                 if(mes == 'Diciembre'):
                     mensaje = "Felices fiestas!!!"
+            case _ :
+                exit()
                 
         alert(title="", message = mensaje)
 

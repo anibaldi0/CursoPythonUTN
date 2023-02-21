@@ -24,9 +24,18 @@ class App(customtkinter.CTk):
 
         self.lista_datos = [1,80,5,0,15,-5,1,79]
 
-
+        self.suma_numeros_lista = 0
+        self.promedio_numeros_lista = 0
+        self.cantidad_numeros_lista =0
     def btn_calcular_on_click(self):
-        pass
+        self.cantidad_numeros_lista = len(self.lista_datos)
+        for numero in self.lista_datos:
+            self.suma_numeros_lista = self.suma_numeros_lista + numero
+            self.promedio_numeros_lista = self.suma_numeros_lista / self.cantidad_numeros_lista
+        print(self.suma_numeros_lista)
+        print(self.promedio_numeros_lista)
+        alert(title="", message="El promedio de los numeros de la lista es {0}".format(self.promedio_numeros_lista))
+
     
 if __name__ == "__main__":
     app = App()

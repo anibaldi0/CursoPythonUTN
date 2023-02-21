@@ -36,10 +36,12 @@ class App(customtkinter.CTk):
     def mostrar_alert(self):
         alert(title="", message="Bienvenidos a la UTN FRA")
         self.mostrar_mensaje = self.after(3000, self.mostrar_alert)
+        self.btn_mostrar.configure(state="disabled")
         
     def btn_cancelar_on_click(self):
         self.after_cancel(self.mostrar_mensaje)
         alert(title="", message="Alert de Bienvenida Cancelado")
+        self.btn_mostrar.configure(state="enabled")
 
 if __name__ == "__main__":
     app = App()

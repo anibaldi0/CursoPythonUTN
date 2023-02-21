@@ -27,11 +27,11 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=1, pady=10, columnspan=2, sticky="nsew")
 
     def btn_mostrar_on_click(self):
-        self.mostrar_alert()
+        self.after(1000, self.mostrar_alert)
 
     def mostrar_alert (self):
         alert(title="", message="Bienvenidos a la UTN FRA")
-        self.after(3000, self.mostrar_alert)
+        
         
 
 if __name__ == "__main__":

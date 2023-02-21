@@ -8,6 +8,8 @@ import random
 
 
 '''
+Nombre: Anibal Caeiro
+
 El departamento de NUMEROS ESPECIALES  del instituto matemático  FonteCristo  nos está pidiendo una aplicación que verifique las distintas cualidades de los números.
 
 Para cada una de estas acciones  debemos realizar la lógica para verificar las cualidades pedidas:

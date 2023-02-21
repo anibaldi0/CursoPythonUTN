@@ -6,6 +6,8 @@ import customtkinter
 import random
 
 '''
+Nombre: Anibal Caeiro
+
 Enunciado:
 Debemos mostrar dos números Random del 1 al 10 y una de las operaciones básicas (suma, resta y multiplicación).
 Solo debemos mostrar habilitado el boton de la operacion que salio seleccionada por el random, el resto de los botones se deberan 

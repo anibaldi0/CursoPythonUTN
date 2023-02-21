@@ -42,10 +42,49 @@ class App(customtkinter.CTk):
         
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
-        
-    
+    '''
+    Si es invierno: solo se viaja a Bariloche
+    Si es verano: se viaja a Mar del plata y Cataratas
+    Si es otoño: se viaja a todos los lugares
+    Si es primavera: se viaja a todos los lugares menos Bariloche
+    '''
     def btn_informar_on_click(self):
-        pass
+        self.resetear()
+        self.estacion_del_ano = self.combobox_estaciones.get()
+        self.destino = self.combobox_destino.get()
+
+        match(self.estacion_del_ano):
+            case 'Verano':
+                if(self.destino == 'Mar del plata' or self.destino == 'Cataratas'):
+                    print("Se viaja")
+                    self.mensaje = self.mensaje1
+                else:
+                    print("No se viaja")
+                    self.mensaje = self.mensaje2
+            case 'Otoño':
+                if(self.destino == 'Bariloche' or self.destino == 'Mar del plata' or self.destino == 'Cataratas' or self.destino == 'Cordoba'):
+                    print("Se viaja")
+                    self.mensaje = self.mensaje1
+            case 'Invierno':
+                if(self.destino == 'Bariloche'):
+                    print("Se viaja")
+                    self.mensaje = self.mensaje1
+                else:
+                    print("No se viaja")
+                    self.mensaje = self.mensaje2
+            case 'Primavera':
+                if(self.destino == 'Mar del plata', 'Cataratas', 'Cordoba'):
+                    print("Se viaja")
+                    self.mensaje = self.mensaje1
+                else:
+                    print("No se viaja")
+                    self.mensaje = self.mensaje2
+
+        alert(title="", message=self.mensaje)
+
+    def resetear (self):
+        self.mensaje1 = "Se viaja"
+        self.mensaje2 = "No se viaja"
     
 if __name__ == "__main__":
     app = App()
