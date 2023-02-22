@@ -10,9 +10,7 @@ import customtkinter
 Nombre: Anibal
 Apellido: Caeiro
 
-Enunciado:
-Al presionar el botón INICIAR se debe mostrar un mensaje de bienvenida "Bienvenidos a la UTN FRA" cada 3 segundos. 
-
+Luego de presionar el botón 'Iniciar', se inhabilita el botón durante 3(tres) segundos
 '''
 
 class App(customtkinter.CTk):
@@ -24,16 +22,18 @@ class App(customtkinter.CTk):
         self.title("UTN Fra")
 
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
-        self.btn_mostrar.grid(row=1, pady=10, columnspan=2, sticky="nsew")
+        self.btn_mostrar.grid(row=1, pady=10, columnspan=2, sticky="nsew") #con .grid_forget lo oculto
+
 
     def btn_mostrar_on_click(self):
-        self.mostrar_alert()
+        self.ocultar_boton()
+        self.after(3000, self.mostrar_botones)
 
-    def mostrar_alert (self):
-        self.after(3000, self.mostrar_alert)
-        alert(title="", message="Bienvenidos a la UTN FRA")
-        
-        
+    def mostrar_botones(self):
+        self.btn_mostrar.grid(row=1, pady=10, columnspan=2, sticky="nsew")
+
+    def ocultar_boton(self):
+        self.btn_mostrar.grid_forget()
 
 if __name__ == "__main__":
     app = App()

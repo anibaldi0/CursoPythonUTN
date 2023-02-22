@@ -37,34 +37,51 @@ class App(customtkinter.CTk):
         self.btn_oculto_1 = customtkinter.CTkButton(master=self, text="Boton Oculto 1", command=self.btn_oculto_1_on_click)
         self.btn_oculto_2 = customtkinter.CTkButton(master=self, text="Boton Oculto 2", command=self.btn_oculto_2_on_click)
         self.btn_oculto_3 = customtkinter.CTkButton(master=self, text="Boton Oculto 3", command=self.btn_oculto_3_on_click)
-
-        self.flag_btn_1 = False
-        self.flag_btn_2 = False
-        self.flag_btn_3 = False
-
-        self.tiempo_inicial = 0
+        self.btn_check_all = customtkinter.CTkButton(master=self, text="Check all", command=self.btn_oculto_3_on_click)
 
     def btn_mostrar_on_click(self):
-        pass
+        self.resetear()
+        self.activar_boton_oculto()
         
     def btn_oculto_1_on_click(self):
-        pass
+        self.ts_fin_temporizador_1 = time.time()
+        self.tiempo_1 = self.ts_fin_temporizador_1 - self.ts_inicio_temporizador
+        self.lista_tiempos.append(self.tiempo_1)
+        #print(self.tiempo_1)
 
     def btn_oculto_2_on_click(self):
-        pass
+        self.ts_fin_temporizador_2 = time.time()
+        self.tiempo_2 = self.ts_fin_temporizador_2 - self.ts_inicio_temporizador
+        self.lista_tiempos.append(self.tiempo_2)
+        #print(self.tiempo_2)
 
     def btn_oculto_3_on_click(self):
-        pass
+        self.ts_fin_temporizador_3 = time.time()
+        self.tiempo_3 = self.ts_fin_temporizador_3 - self.ts_inicio_temporizador
+        self.lista_tiempos.append(self.tiempo_3)
+        #print(self.tiempo_3)
 
     def btn_check_all_press(self):
-        pass
+        for self.tiempo in self.lista_tiempos:
+            if(self.tiempo_maximo == None or self.tiempo > self.tiempo_maximo):
+                self.tiempo_maximo = self.tiempo
+                print(self.tiempo_maximo)
 
-    def restart(self):
-        pass
+    def fin_temporizador(self):
+        self.ts_tiempo_final_total = self.tiempo_1 + self.tiempo_2 + self.tiempo_3
+        print(self.ts_tiempo_final_total)
+
+    def resetear(self):
+        self.tiempo_maximo = None
+        self.ts_inicio_temporizador = time.time()
+        self.lista_tiempos = []
+        self.tiempo = 0
         
     def activar_boton_oculto(self):
-        pass
-        
+        self.btn_oculto_1.grid(row=2, pady=10, columnspan=2, sticky="nsew")    
+        self.btn_oculto_2.grid(row=3, pady=10, columnspan=2, sticky="nsew")    
+        self.btn_oculto_3.grid(row=4, pady=10, columnspan=2, sticky="nsew")
+        self.btn_check_all.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
 if __name__ == "__main__":
     app = App()

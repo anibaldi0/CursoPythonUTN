@@ -1,0 +1,19 @@
+1- # tiempo
+	self.after(1000, self.mostrar_mensaje)   para mostrar mensaje a 1segundo
+	self.after_cancel(self.mostrar_mensaje)  para cancelar mensaje
+2- self.btn_mostrar.configure(state="disabled")  para deshabilitar el boton mostrar
+   self.btn_mostrar.configure(state="enabled")   para habilitar el boton mostrar
+   self.btn_mostrar.grid_forget()   oculta el boton
+   self.btn_mostrar.grid(row=1, pady=10, columnspan=2, sticky="nsew")   muestra el boton
+3- match(mes):
+	case 'Enero':
+		if(mes == Enero):
+			mensaje="Mensaje"
+	case 'Febrero':
+		if(mes == Febrero):
+			mensaje="Otro mensaje"
+	case _ :
+		exit()
+4- self.numero_aleatorio = random.randint(1, 100)  crea numero aleatorio del 1 al 100
+5- self.inicio_temporizador = time.time()
+   self.fin_temporizador = time.time()

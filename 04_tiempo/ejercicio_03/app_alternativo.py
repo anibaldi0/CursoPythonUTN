@@ -35,21 +35,26 @@ class App(customtkinter.CTk):
         cada 2 segundos, y mostrar  la cantidad de veces mostrado (contador). 
         Al presionar el botón FINALIZAR se deben detener los mensajes.
         '''
-        self.contador  = 0
 
     def btn_mostrar_on_click(self):
+        self.resetear()
         self.mostrar_mensaje()
+        self.btn_mostrar.configure(state="disabled")
 
     def mostrar_mensaje(self):
-        self.contador = self.contador + 1
-        alert(title="", message="Bienvenidos a la UTN FRA\nEl mensaje se mostro {} veces".format(self.contador))
-        self.mostrar_alert = self.after(2000, self.mostrar_mensaje)
+        self.contador_mensajes_bienvenida += 1
+        print(self.contador_mensajes_bienvenida)
+        self.mostrar_mensaje_bienvenida = self.after(2000, self.mostrar_mensaje)
+        alert(title="", message="Bienvenidos a la UTN FRA\nMensaje mostrado {0} veces".format(self.contador_mensajes_bienvenida))
 
-        
     def btn_cancelar_on_click(self):
-        self.after_cancel(self.mostrar_alert)
-        alert(title="", message="Se cancela el mensaje de Bienvenida\nhabiendose mostrado {0} veces".format(self.contador))
-        
+        self.after_cancel(self.mostrar_mensaje_bienvenida)
+        self.mensaje = "Despues de haberse mostrado {0} veces\nel mensaje de Bienvenida fue cancelado".format(self.contador_mensajes_bienvenida)
+        alert(title="", message=self.mensaje)
+        self.btn_mostrar.configure(state="enabled")
+
+    def resetear(self):
+        self.contador_mensajes_bienvenida = 0
 
 
 if __name__ == "__main__":
